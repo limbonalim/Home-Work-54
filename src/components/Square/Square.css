@@ -1,0 +1,14 @@
+.Square {
+  width: 70px;
+  height: 70px;
+  background: #213547;
+  margin: 1px;
+}
+
+.Square:hover {
+  background: #535bf2;
+}
+
+.Square .active {
+  background: #f9f9f9;
+}
