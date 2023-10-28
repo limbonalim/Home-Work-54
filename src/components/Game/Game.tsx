@@ -1,14 +1,15 @@
-import React from 'react';
+import React, {MouseEventHandler} from 'react';
 import Square from '../Square/Square.tsx';
 import {Cell} from '../../types';
 import './Game.css';
 
 interface Props {
   items: Cell[];
-  showInner: React.MouseEventHandler;
+  showInner: MouseEventHandler;
+  gameOver: boolean;
 }
 
-const Game: React.FC<Props> = ({items, showInner}) => {
+const Game: React.FC<Props> = ({items, showInner, gameOver}) => {
   return (
     <div className="Game">
       {items.map((item) => {
@@ -17,7 +18,11 @@ const Game: React.FC<Props> = ({items, showInner}) => {
             key={item.id}
             hasItem={item.hasItem}
             clicked={item.clicked}
-            showInner={() => showInner(item.id)}/>);
+            showInner={() => {
+              showInner(item.id);
+            }}
+            id={item.id}
+          />);
       })}
     </div>
   );

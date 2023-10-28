@@ -1,19 +1,20 @@
-import React from 'react';
+import React, {MouseEventHandler} from 'react';
 import './Board.css';
 import Counter from '../Counter/Counter.tsx';
 
 interface Props extends React.PropsWithChildren {
   counter: number;
+  reset: MouseEventHandler;
 }
 
-const Board: React.FC<Props> = ({children,counter}) => {
+const Board: React.FC<Props> = ({children, counter, reset}) => {
   return (
     <div className="Board">
       <div className="Play">
         {children}
       </div>
       <Counter score={counter}/>
-      <button>Click me</button>
+      <button onClick={reset}>Reset</button>
     </div>
   );
 };

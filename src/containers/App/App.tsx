@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import React, {useState} from 'react';
 import Board from '../../components/Board/Board.tsx';
 import {Cell} from '../../types';
 import './App.css';
@@ -39,6 +39,7 @@ const createItems = (): Cell[] => {
 const App = () => {
   const [items, setItems] = useState(createItems());
   const [score, setScore] = useState(0);
+  const [gameOver, setGameOver] = useState(false);
 
   let squareList = null;
 
@@ -53,13 +54,18 @@ const App = () => {
     }));
   };
 
+  const reset = () => {
+    setItems(createItems);
+    setScore(0);
+  };
+
   squareList = (
-    <Game showInner={showInner} items={items}/>
+    <Game showInner={showInner} items={items} gameOver={gameOver}/>
   );
 
   return (
     <div>
-      <Board counter={score}>
+      <Board counter={score} reset={reset}>
         {squareList}
       </Board>
     </div>

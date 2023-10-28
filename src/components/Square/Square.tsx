@@ -3,7 +3,7 @@ import {Cell} from '../../types';
 import './Square.css';
 
 export interface SquareType extends Cell {
-  showInner?: MouseEventHandler;
+  showInner: MouseEventHandler | null;
 }
 
 const Square: React.FC<SquareType> = ({hasItem, clicked, showInner}) => {
