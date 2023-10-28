@@ -2,17 +2,19 @@ import React, {MouseEventHandler} from 'react';
 import {Cell} from '../../types';
 import './Square.css';
 
-interface Square extends Cell {
-  showInner: MouseEventHandler;
+export interface SquareType extends Cell {
+  showInner?: MouseEventHandler;
 }
-const Square: React.FC<Square> = ({hasItem,clicked, showInner}) => {
+
+const Square: React.FC<SquareType> = ({hasItem, clicked, showInner}) => {
   const className = ['Square'];
   if (clicked) {
-    className.push('active')
+    className.push('active');
   }
 
   return (
-    <div className={className.join(' ')} onClick={showInner}>
+    <div className={className.join(' ')} onClick={!clicked ? showInner : null}>
+      {hasItem ? <span className="ring">o</span> : null}
     </div>
   );
 };

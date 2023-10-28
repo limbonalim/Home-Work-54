@@ -2,13 +2,25 @@
   width: 70px;
   height: 70px;
   background: #213547;
+  color: #213547;
   margin: 1px;
+  text-align: center;
+  position: relative;
 }
 
 .Square:hover {
   background: #535bf2;
+  color: #535bf2;
 }
 
-.Square .active {
+.Square.active {
   background: #f9f9f9;
 }
+
+.Square .ring {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
