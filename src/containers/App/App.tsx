@@ -41,7 +41,7 @@ const App = () => {
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(false);
 
-  let squareList = null;
+  let squareList:React.ReactNode;
 
   const showInner = (id) => {
     if (!gameOver) {
@@ -50,7 +50,7 @@ const App = () => {
         if (cell.id !== id) {
           return {...cell};
         } else {
-          if (cell.hasItem === true) {
+          if (cell.hasItem) {
             setGameOver(true);
           }
           return {...cell, clicked: true};
