@@ -6,10 +6,9 @@ import './Game.css';
 interface Props {
   items: Cell[];
   showInner: MouseEventHandler;
-  gameOver: boolean;
 }
 
-const Game: React.FC<Props> = ({items, showInner, gameOver}) => {
+const Game: React.FC<Props> = ({items, showInner}) => {
   return (
     <div className="Game">
       {items.map((item) => {
@@ -21,8 +20,7 @@ const Game: React.FC<Props> = ({items, showInner, gameOver}) => {
             showInner={() => {
               showInner(item.id);
             }}
-            id={item.id}
-          />);
+            id={item.id}/>);
       })}
     </div>
   );

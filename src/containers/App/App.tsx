@@ -44,28 +44,34 @@ const App = () => {
   let squareList = null;
 
   const showInner = (id) => {
-    setScore(prevState => prevState + 1);
-    setItems(prevState => prevState.map((cell) => {
-      if (cell.id !== id) {
-        return {...cell};
-      } else {
-        return {...cell, clicked: true};
-      }
-    }));
+    if (!gameOver) {
+      setScore(prevState => prevState + 1);
+      setItems(prevState => prevState.map((cell) => {
+        if (cell.id !== id) {
+          return {...cell};
+        } else {
+          if (cell.hasItem === true) {
+            setGameOver(true);
+          }
+          return {...cell, clicked: true};
+        }
+      }));
+    }
   };
 
   const reset = () => {
     setItems(createItems);
     setScore(0);
+    setGameOver(false);
   };
 
   squareList = (
-    <Game showInner={showInner} items={items} gameOver={gameOver}/>
+    <Game showInner={showInner} items={items}/>
   );
 
   return (
     <div>
-      <Board counter={score} reset={reset}>
+      <Board counter={score} reset={reset} gameOver={gameOver}>
         {squareList}
       </Board>
     </div>
